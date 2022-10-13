@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from "./home-page/home-page.component";
+// import { SwitcherComponent } from './switcher/switcher.component';
 import { ChainDetailPageComponent } from "./chain-detail-page/chain-detail-page.component";
 import {
   SynchronizationScriptsComponent
