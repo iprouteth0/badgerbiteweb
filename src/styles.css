@@ -1,0 +1,158 @@
+@import "~prismjs/plugins/toolbar/prism-toolbar.css";
+@import "~prismjs/themes/prism.css";
+@import '../src/assets/css/style.css';
+@import '../src/assets/css/bootstrap.min.css';
+@import '../src/assets/css/custom.css';
+
+@font-face {
+  font-family: Monaco;
+  src: url(src/assets/font/Monaco.woff) format("opentype");
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Monaco', sans-serif !important;
+}
+
+body p {
+  margin-bottom: 0;
+}
+
+/* Text */
+
+p.title {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+p.sub-title {
+  font-size: 20px;
+}
+
+/* Tabs */
+
+.tabs-container {
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 50rem;
+  border: 1px solid var(--border-color);
+  transition: border-color var(--animation-speed) ease;
+}
+
+.tabs-container:hover {
+  border-color: var(--border-active-color)
+}
+
+.tabs-container .tab-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  transition: all var(--animation-speed) ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.tabs-container .tab-button.active {
+  color: #ffffff;
+  opacity: var(--button-opacity);
+  background-color: var(--button-color);
+}
+
+.tabs-container .tab-button:first-child {
+  border-top-left-radius: 50rem;
+  border-bottom-left-radius: 50rem;
+}
+
+.tabs-container .tab-button:last-child {
+  border-top-right-radius: 50rem;
+  border-bottom-right-radius: 50rem;
+}
+
+/* Copy button */
+
+div.code-toolbar > .toolbar > .toolbar-item > button,
+.copy-button {
+  position: absolute;
+  top: 14px;
+  right: 22px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 0.9;
+  background-color: white;
+  color: black;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: all .3s ease-in-out;
+  box-shadow: #64646f33 0 7px 29px;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button:hover,
+.copy-button:hover {
+  background-color: #f6f6f6;
+  border-color: var(--border-active-color);
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button:active,
+.copy-button:active {
+  background-color: white;
+  box-shadow: none;
+}
+
+/* Tooltip */
+
+.ratio-tooltip {
+  font-size: 16px !important;
+  font-family: 'Monaco', sans-serif !important;
+}
+
+.tooltip-inner {
+  max-width: 400px !important;
+}
+
+.no-opacity.tooltip.show {
+  opacity: 1;
+}
+
+:root {
+  --max-width: 1212px;
+  --details-color: #57606a;
+  --animation-speed: 200ms;
+
+  /* button */
+  --button-color: #212529;
+  --button-opacity: 0.9;
+  --button-opacity-hover: 0.8;
+  --button-opacity-active: 1;
+
+  /* border */
+  --border-color: #d0d7de;
+  --border-active-color: #212529;
+  --border-radius: 0.5rem;
+
+  /* code block */
+  --code-background-color: #f5f2f0
+}
+
+@media (max-width: 576px) {
+  body.left-hand-menu-open {
+    overflow: hidden;
+  }
+
+  body.left-hand-menu-open .bg-opacity {
+    opacity: 0.5;
+    background: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 101; /*z-index 105 is for hand menu for mobile, this one should be less*/
+  }
+
+  body.left-hand-menu-open .card {
+    transform: translateX(0);
+  }
+}

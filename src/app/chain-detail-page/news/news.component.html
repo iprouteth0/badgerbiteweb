@@ -1,0 +1,13 @@
+<ng-container *ngIf="this.chainService.activeChain as chain">
+<div class="row">
+  <p class="title">{{chain.id}} News</p>
+  <div>
+    <div class="news">
+    <ngx-twitter-timeline 
+    [data]='{sourceType: "url", url: chain.twitter}'
+    [opts]='{tweetLimit: 10}'
+></ngx-twitter-timeline>
+    </div>
+  </div>
+</div>
+</ng-container>

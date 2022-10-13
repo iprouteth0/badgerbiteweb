@@ -1,0 +1,61 @@
+
+<div *ngIf="chain" [ngClass]="chain.isArchive ? 'card archive' : 'card'">
+<!-- <div class="blob green"></div> -->
+<div class="price">{{this.price}}</div>
+  <div class="details" *ngIf="gov?.Active" 
+
+  ngbTooltip="No {{gov.ID}} proposal is on voting status.&#10;&#13;{{gov.result[0].content.value.title}}...&#10;&#13; Click to Vote now if not done so!"
+  [openDelay]="200" [closeDelay]="500">
+  <div class="blobs-container"><div class="blob green"><span><a href="{{chain.blockExplorer}}/gov/{{gov.ID}}">.</a></span></div></div>
+  <!-- <div class="blink"><span><a href="{{chain.blockExplorer}}/gov/{{gov.ID}}">Active Proposal!</a></span></div> -->
+
+</div>
+
+
+<img alt="{{chain.chainName}}" src="assets/img/chain/{{chain.logo}}">
+<div class="title">{{chain.chainName}}
+  <div class="project-support" *ngIf="chain.isProjectSupportUs"
+       ngbTooltip="{{chain.chainName}} supports us"
+       tooltipClass="ratio-tooltip">★
+  </div>
+</div>
+
+<div class="details">{{chain.chainId}}</div>
+
+
+
+
+  <div class="container">
+    <div class="row">
+            <div class="progress pink">
+                <p class="progress-title">APY</p>
+                <div class="progress-bar" style="width:{{summary?.chain.params.calculated_apr | percent: '0.2-2'}}; background:#ff1170;">
+                    <div class="progress-value">{{summary?.chain.params.calculated_apr | percent: '0.2-2'}}</div>
+                </div>
+            </div>
+    </div>
+  </div>
+
+
+<div class="fast-links">
+  <div
+    class="link"
+    [routerLink]="['/' + chain.id + '/installation']"
+  >
+    install
+  </div>
+  <div
+    class="link"
+    [routerLink]="['/' + chain.id + '/sync']"
+    fragment="snapshot"
+  >
+    sync
+  </div>
+  <div
+    class="link"
+    [routerLink]="['/' + chain.id + '/cheat-sheet']"
+  >
+    cheat-sheet
+  </div>
+</div>
+</div>

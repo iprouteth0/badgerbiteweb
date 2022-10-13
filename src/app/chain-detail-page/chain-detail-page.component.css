@@ -1,0 +1,9 @@
+.content {
+  padding-left: 280px;
+}
+
+@media (max-width: 576px) {
+  .content {
+    padding-left: 0;
+  }
+}

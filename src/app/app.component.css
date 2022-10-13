@@ -1,0 +1,12 @@
+.body.container {
+  padding-top: 80px;
+  max-width: var(--max-width);
+  min-height: calc(100% - 100px);
+}
+
+@media (max-width: 576px) {
+  .body.container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

@@ -1,0 +1,264 @@
+.card {
+  width: 250px;
+  border: none;
+  outline: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: white;
+  position: fixed;
+  box-shadow: rgb(100 100 111 / 20%) 0 7px 29px 0;
+  z-index: 105; /* higher than header z-index (100) to be able to popup tooltip on top*/
+  margin-top: 15px;
+}
+
+.mobile-menu-header {
+  display: none;
+}
+
+.chain-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.chain-info .logo-image {
+  border-radius: 100%;
+  margin-bottom: 20px;
+  width: 82px;
+  height: 82px;
+}
+
+.chain-info .title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.chain-info .details {
+  font-size: 18px;
+  color: var(--details-color);
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.menu .item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--animation-speed) ease-out;
+}
+
+.menu .item:hover,
+.menu .sub-item:hover {
+  background-color: var(--code-background-color);
+}
+
+.menu .item.active {
+  color: white;
+  background-color: var(--button-color);
+  opacity: var(--button-opacity);
+}
+
+.menu .item.active:hover {
+  opacity: var(--button-opacity-hover);
+}
+
+.menu .item.active:active {
+  opacity: var(--button-opacity-active);
+}
+
+.menu .sub-item-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: all var(--animation-speed) ease-out;
+  background-color: var(--code-background-color)
+}
+
+.menu .sub-item-container.active {
+  max-height: 150px; /* just big number */
+}
+
+.menu .sub-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 35px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu .sub-item:hover {
+  text-decoration: underline;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-social {
+  font-size: 24px;
+  color: var(--button-color);
+  padding: 10px;
+  cursor: pointer;
+  opacity: var(--button-opacity);
+  transition: opacity var(--animation-speed) ease;
+}
+
+.btn-social:hover {
+  opacity: var(--button-opacity-hover);
+}
+
+.btn-social:active {
+  opacity: var(--button-opacity-active);
+}
+
+.support-us {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+
+.support-us-btn {
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  cursor: pointer;
+  color: #ffffff!important;
+  background-color: var(--button-color);
+  opacity: var(--button-opacity);
+  transition: opacity var(--animation-speed) ease;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.support-us-btn:hover {
+  opacity: var(--button-opacity-hover);
+}
+
+.support-us-btn:active {
+  opacity: var(--button-opacity-active);
+}
+
+.support-us-btn p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.shadow-pulse-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  background-color: gray;
+}
+
+.shadow-pulse-circle.synced {
+  background: rgb(120, 192, 0);
+  animation: shadow-pulse-green 1s infinite;
+}
+
+.shadow-pulse-circle.halted,
+.shadow-pulse-circle.inactive {
+  background: rgb(220, 53, 69);
+  animation: shadow-pulse-red 1s infinite;
+}
+
+@media (max-width: 576px) {
+  .card {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0;
+    z-index: 105;
+    height: 100%;
+    outline: none;
+    border-radius: unset;
+    transform: translateX(500px);
+    transition: all ease var(--animation-speed);
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    min-height: 70px;
+    flex-direction: row;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: content-box;
+  }
+
+  .mobile-menu-header .logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+  }
+
+  .mobile-menu-header p.title {
+    font-size: 24px;
+  }
+
+  .chain-info .title {
+    letter-spacing: 4px;
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  .fa-xmark {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  .menu {
+    padding-top: 0;
+  }
+
+  .menu .menu-item,
+  .menu .menu-item.active {
+    border-left: none;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding: 25px 0;
+  }
+
+  .shadow-pulse-circle {
+    right: 10px;
+    top: 10px;
+  }
+
+  .chain-info,
+  .social {
+    display: none;
+  }
+
+  .support-us {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .support-us-btn {
+    border: 0;
+    border-radius: var(--border-radius);
+  }
+}
+
+@media (max-height: 400px) {
+  .card {
+    position: absolute;
+  }
+}
