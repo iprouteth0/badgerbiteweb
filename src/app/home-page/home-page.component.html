@@ -15,11 +15,23 @@
                     <img src="assets/img/server.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
                   </div>
                   <div class="content mt-3">
-                    <h6 class="mb-0"><a href="javascript:void(0)" class="title text-dark">Enterprise Infrastructure</a></h6>
+                    <h6 class="mb-0"><a href="javascript:void(0)" (click)="open(infrastructure)" class="title text-dark">Enterprise Infrastructure</a></h6>
                   </div>
                 </div>
               </div>
             </div>
+            <ng-template #infrastructure let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>Hello, World!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+              </div>
+            </ng-template>
             <!--end col-->
             <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
               <div class="card explore-feature border-0 rounded text-center bg-white">

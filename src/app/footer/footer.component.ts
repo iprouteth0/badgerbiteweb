@@ -21,6 +21,7 @@ export class FooterComponent implements OnInit {
     .setAttribute('href', './assets/css/colors/' + color + '.css');
 }
 
+
 /**
  * Set dark theme
  */
@@ -59,6 +60,12 @@ setRtl() {
 setLtr() {
   document.getElementById('theme-opt')!.setAttribute('href', './assets/css/style.min.css');
 }
-
-
+onChange(target: EventTarget | null) {
+  const input = target as HTMLInputElement;
+  if (input.checked) {
+    document.getElementById('theme-opt')!.setAttribute('href', './assets/css/style-dark.min.css');
+  } else {
+    document.getElementById('theme-opt')!.setAttribute('href', './assets/css/style.min.css');
+  }
+}
 }

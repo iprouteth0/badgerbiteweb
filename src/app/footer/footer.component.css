@@ -13,128 +13,164 @@ footer .container {
   max-width: var(--max-width);;
 }
 
-*
-{
-    user-select: none;  
-}
-
-html, body
-{
+html, body{
+    width: 100%;
     height: 100%;
+    margin: 0px;
 }
 
-body
-{
-    margin: 0;
-    background-color: #fff;
+body{
+    display: table;
 }
 
-#toggle_checkbox
-{
-    display: none;
+/*switch styles*/
+
+div.btn-container{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
-label
-{
-    display:inline;
-    float: right;
-
-    width: 116px;
-    height: 56px;
-
-
-    background-color: #77b5fe;
-    border-radius: 56px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    transition: 0.3s ease background-color;
-    overflow: hidden;
+div.btn-container i{
+    display: inline-block;
+    position: relative;
+    top: -9px;
 }
 
-#star
-{
-    position: absolute;
-    top: 13px;
-    left: 13px;
-    width: 30px;
-    height: 30px;
-    background-color: #fafd0f;
-    transform: scale(1);
-    border-radius: 50%;
-    transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
-    z-index: 1;
+label {
+    font-size: 13px;
+    color: #424242;
+    font-weight: 500;
 }
 
-#star-1
-{
+.btn-color-mode-switch{
+    display: inline-block;
+    margin: 0px;
     position: relative;
 }
 
-#star-2
-{
-    position: absolute;
-    transform: rotateZ(36deg);
+.btn-color-mode-switch > label.btn-color-mode-switch-inner{
+    margin: 0px;
+    width: 140px;
+    height: 30px;
+    background: #E0E0E0;
+    border-radius: 26px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
+    display: block;
 }
 
-.star
-{
+.btn-color-mode-switch > label.btn-color-mode-switch-inner:before{
+    content: attr(data-on);
+    position: absolute;
+    font-size: 12px;
+    font-weight: 500;
+    top: 7px;
+    right: 20px;
+
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner:after{
+    content: attr(data-off);
+    width: 70px;
+    height: 16px;
+    background: #fff;
+    border-radius: 26px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 6px -2px #111;
+    padding: 5px 0px;
+}
+
+.btn-color-mode-switch > .alert{
+    display: none;
+    background: #FF9800;
+    border: none;
+    color: #fff;
+}
+
+.btn-color-mode-switch input[type="checkbox"]{
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    opacity: 0;
+    position: absolute;
     top: 0;
-    left: -7px;
-    font-size: 54px;
-    line-height: 28px;
-    color: #fafd0f;
-    transition: 0.3s ease color;
+    z-index: 1;
+    margin: 0px;
 }
 
-#moon
-{
-    position: absolute;
-    bottom: -52px;
-    right: 8px;
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: 0.3s ease bottom;
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
+    background: #151515;
+    color: #fff;
 }
 
-#moon:before
-{
-    content: "";
-    position: absolute;
-    top: -12px;
-    left: -17px;
-    width: 40px;
-    height: 40px;
-    background-color:#03a9f4;
-    border-radius: 50%;
-    transition: 0.3s ease background-color;
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after{
+    content: attr(data-on);
+    left: 68px;
+    background: #3c3c3c;
 }
 
-#toggle_checkbox:checked + label
-{
-    background-color: #000;
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before{
+    content: attr(data-off);
+    right: auto;
+    left: 20px;
 }
 
-#toggle_checkbox:checked + label #star
-{
-    top: 3px;
-    left: 64px;
-    transform: scale(0.3);
-    background-color: yellow;
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner{
+    /*background: #66BB6A; */
+    /*color: #fff;*/
 }
 
-#toggle_checkbox:checked + label .star
-{
-    color: yellow;
+.btn-color-mode-switch input[type="checkbox"]:checked ~ .alert{
+    display: block;
 }
 
-#toggle_checkbox:checked + label #moon
-{
-    bottom: 8px;
+/*mode preview*/
+.dark-preview{
+    background: #0d0d0d;
 }
 
-#toggle_checkbox:checked + label #moon:before
-{
-    background-color: #000;
+.dark-preview div.btn-container i.fa-sun-o{
+    color: #777;
+}
+
+.dark-preview div.btn-container i.fa-moon-o{
+    color: #fff;
+    text-shadow: 0px 0px 11px #fff;
+}
+
+.white-preview{
+    background: #fff;
+}
+
+.white-preview div.btn-container i.fa-sun-o{
+    color: #ffa500;
+    text-shadow: 0px 0px 16px #ffa500;
+}
+
+.white-preview div.btn-container i.fa-moon-o{
+    color: #777;
+}
+
+p.by {
+    
+}
+
+p.by a{
+    text-decoration: none;
+    color: #000;
+}
+
+.dark-preview p.by a{
+    color: #777;
+}
+
+.white-preview p.by a{
+    color: #000;
 }

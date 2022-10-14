@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Chain } from "../model/chain";
 import { ChainService } from "../service/chain.service";
 import { StateService } from "../service/state.service";
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
+
 export class HomePageComponent implements OnInit {
 
   mainnetChains: Chain[] = [];
@@ -17,7 +21,8 @@ export class HomePageComponent implements OnInit {
   chainType = 'all';
   showAbout = false;
 
-  constructor(public chainService: ChainService, public stateService: StateService) {
+  
+  constructor(public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
   }
 
@@ -102,5 +107,10 @@ export class HomePageComponent implements OnInit {
   setLtr() {
     document.getElementById('theme-opt')!.setAttribute('href', './assets/css/style.min.css');
   }
+  open(content: any) {
+    this.modalService.open(content);
+  }
 
 }
+
+
