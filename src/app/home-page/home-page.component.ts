@@ -108,7 +108,7 @@ export class HomePageComponent implements OnInit {
     document.getElementById('theme-opt')!.setAttribute('href', './assets/css/style.min.css');
   }
   open(content: any) {
-    this.modalService.open(content);
+    this.modalService.open(content, { centered: true });
   }
 
 }

@@ -1,7 +1,8 @@
 <!-- Hero Start -->
 <section class="bg-half-170 bg-primary d-table w-100" id="home"
-  style="background: url('assets/images/insurance/bg.png') center center;">
+  style="background: url('assets/img/back.png') center center;">
   <div class="container">
+    <p style="text-align:center;"><img src="assets/img/logo2.png" alt="Logo" class="img-fluid" style="max-width: 50%;padding-inline: 0px;"></p>
     <div class="row mt-5 justify-content-center">
       <div class="col-lg-12">
         <div class="title-heading text-center">
@@ -22,14 +23,14 @@
             </div>
             <ng-template #infrastructure let-c="close" let-d="dismiss">
               <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                <h4 class="modal-title" id="modal-basic-title">Cutting Edge Technology</h4>
                 <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
               </div>
               <div class="modal-body">
-                <p>Hello, World!</p>
+                <p>Our nodes are redundant and are globally distributed between multiple data centers, providing uninterrupted service.<br>Utilizing latest technologies, fully customized infrastructure service, high availability and efficiency on Tier 3+ provider to ensure 100% uptime<br><br>We never go down!</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
               </div>
             </ng-template>
             <!--end col-->
@@ -40,11 +41,24 @@
                     <img src="assets/img/security.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
                   </div>
                   <div class="content mt-3">
-                    <h6 class="mb-0"><a href="javascript:void(0)" class="title text-dark">Enhanced Security</a></h6>
+                    <h6 class="mb-0"><a href="javascript:void(0)" (click)="open(security)" class="title text-dark">Enhanced Security</a></h6>
                   </div>
                 </div>
               </div>
             </div>
+            <ng-template #security let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Security is our middle name!</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>Here at BadgerBite we take security very seriously.<br>Our multilayer network setup protects validator nodes behind globally distribited public sentry nodes,thus eliminating the risk of network DDOS attacks and ensures the seamelessly run of services.
+                  <br><br>Your stake is safe with us!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+              </div>
+            </ng-template>
             <!--end col-->
             <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
               <div class="card explore-feature border-0 rounded text-center bg-white">
@@ -53,12 +67,24 @@
                     <img src="assets/img/monitoring.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
                   </div>
                   <div class="content mt-3">
-                    <h6 class="mb-0"><a href="javascript:void(0)" class="title text-dark">27/7 Monitoring and Alert</a>
+                    <h6 class="mb-0"><a href="javascript:void(0)" (click)="open(monitoring)" class="title text-dark">27/7 Monitoring and Alert</a>
                     </h6>
                   </div>
                 </div>
               </div>
             </div>
+            <ng-template #monitoring let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Always on Call,Always Awake!</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>Every Node is monitored by multiple robust tools reporting its performance and alerting in case of critical incidents.Our members are spread across different timezones, ready to respond and resolve immediately no matter the time of day or night.<br><br>BadgerBite never sleeps!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+              </div>
+            </ng-template>
             <!--end col-->
             <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
               <div class="card explore-feature border-0 rounded text-center bg-white">
@@ -67,14 +93,26 @@
                     <img src="assets/img/umbrella.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
                   </div>
                   <div class="content mt-3">
-                    <h6 class="mb-0"><a href="javascript:void(0)" class="title text-dark">100% Slashing Protection</a></h6>
+                    <h6 class="mb-0"><a href="javascript:void(0)" (click)="open(slashing)" class="title text-dark">100% Slashing Protection</a></h6>
                   </div>
                 </div>
               </div>
             </div>
+            <ng-template #slashing let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Dont Worry,We Got You Covered!</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>We offer all our delegators a protection of their funds in case of any slashing event due to downtime or technical difficulties resulting in missed blocks and rewards. Never lose any funds or miss out on any rewards due to uptime slashing.<br><br>Never miss a token!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+              </div>
+            </ng-template>
             <!--end col-->
             <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
-              <div class="card explore-feature border-0 rounded text-center bg-white">
+              <div class="card explore-feature border-0 rounded text-center bg-white" (click)="open(social)">
                 <div class="card-body">
                   <div class="icon rounded-circle shadow-lg d-inline-flex justify-content-center">
                     <img src="assets/img/social.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
@@ -85,9 +123,22 @@
                 </div>
               </div>
             </div>
+            <ng-template #social let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Always Happy to Help!</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>Our friendly and kind team members are highly participating in every social platform of the networks we are involved, willing and ready to provide any kind of tech assist to everybody.Feel free to contact us, we are more than happy to help.<br>
+                  <br>Decentralization is our vision!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+              </div>
+            </ng-template>
             <!--end col-->
             <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
-              <div class="card explore-feature border-0 rounded text-center bg-white">
+              <div class="card explore-feature border-0 rounded text-center bg-white" (click)="open(community)">
                 <div class="card-body">
                   <div class="icon rounded-circle shadow-lg d-inline-flex justify-content-center">
                     <img src="assets/img/Community.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
@@ -98,6 +149,19 @@
                 </div>
               </div>
             </div>
+            <ng-template #community let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Responsible Governance!</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>Being an active part of the community is a paramount at BadgerBite.We are actively engaged in governing processes of every network we are part of trying to secure it and promote decentralization.With responsible voting and serious proposals,<br> 
+                  <br>our delegators have voice!</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Close</button>
+              </div>
+            </ng-template>
             <!--end col-->
           </div>
           <!--end row-->
