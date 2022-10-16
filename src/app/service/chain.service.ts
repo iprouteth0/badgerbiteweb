@@ -94,10 +94,7 @@ export class ChainService {
   }
 
   getGovStatus(apiChainId: string) {
-
       return this.http.get(`https://rest.cosmos.directory/${apiChainId}/gov/proposals?status=voting_period`, {responseType: 'json'});
-    
-  
   }
 
   getChainValidators(apiChainId: string) {

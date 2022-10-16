@@ -32,6 +32,7 @@ import {Router, Scroll} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {filter} from "rxjs";
 import { CommonModule } from '@angular/common';
+import { CountToModule } from 'angular-count-to';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot('G-J46ZYRRDQD'),
     NgxGoogleAnalyticsRouterModule,
+    CountToModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       outerStrokeWidth: 5,

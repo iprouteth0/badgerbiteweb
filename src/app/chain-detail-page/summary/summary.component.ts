@@ -104,6 +104,7 @@ export class SummaryComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
+    
     this.chain = this.chainService.activeChain;
     if (this.chain && !this.chain.summaryDisabled) {
       let apiChainId = this.chain.apiChainId || this.chain.id;
@@ -321,6 +322,20 @@ export class SummaryComponent implements OnInit {
     }
   return clients
   }
+
+  extractTotalClients(validators: any): any {
+    validators.validators.sort((a: any, b: any) => b.rank - a.rank)
+    validators.validators.reverse()
+    let clients = 0;
+    for (let i = 0; i < validators.validators.length; i++) {
+      let validator = validators.validators[i];
+      if (validator.operator_address == this.chain?.Valoper) {
+          clients = validator.delegations.total_count;
+      }
+    }
+  return clients
+  }
+
 
   extractAssets(chain: Chain, validators: any): any {
     validators.validators.sort((a: any, b: any) => b.rank - a.rank)
