@@ -31,6 +31,7 @@ import { UpgradeScriptsComponent } from './chain-detail-page/upgrade-scripts/upg
 import {Router, Scroll} from "@angular/router";
 import {ViewportScroller} from "@angular/common";
 import {filter} from "rxjs";
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {filter} from "rxjs";
     AppRoutingModule,
     FormsModule,
     NgxTwitterTimelineModule,
+    CommonModule,
     HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot('G-J46ZYRRDQD'),
     NgxGoogleAnalyticsRouterModule,
