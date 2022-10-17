@@ -28,27 +28,14 @@ export class HomePageComponent implements OnInit {
   TotalClient: number[] = [];
   ValidatorSet?: any;
   Val?: string;
-  
+  TotalClients: number[] = [];
+
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
   }
 
   ngOnInit(): void {
-    const z: number[] = []
-    let x=0
-    for (let i = 0; i < 2; i++) { 
-        this.Val = CHAINS[i].Valoper
-        let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
-        this.chainValidatorsSubscription = this.chainService.getChainValidators(apiChainId)
-        .subscribe((validators: any) => {
-          this.TotalClient[i]=this.extractTotalClients(validators);
-          x = z.reduce((a, b) => a + b, 0);
-          this.ValidatorSet = {
-            clients: this.TotalClient[0]
-          };   
-    });
-    
-    }
+ 
 
 
     this.stateService.chainType.subscribe({
@@ -58,6 +45,33 @@ export class HomePageComponent implements OnInit {
         }
       }
     );
+
+
+    this.TotalClients[1]=10
+    const z: number[] = []
+    let x=""
+
+    for (let i = 1; i < CHAINS.length; i++) { 
+        this.Val = CHAINS[i].Valoper
+        let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
+        this.chainValidatorsSubscription = this.chainService.getChainValidators(apiChainId)
+        .subscribe((validators: any) => {
+          this.TotalClient[i]=(this.extractTotalClients(validators));
+          
+          x += this.TotalClient[1];
+          this.ValidatorSet = {
+            clients: 5
+          };   
+    });
+    
+    }
+  }
+
+
+
+  ngAfterViewInit(): void {
+
+    
   }
 
   onSearchQueryChange(newQuery: string) {
@@ -144,6 +158,7 @@ export class HomePageComponent implements OnInit {
       let validator = validators.validators[i];
       if (validator.operator_address == this.Val) {
           clients = validator.delegations.total_count;
+          this.TotalClients[1] += validator.delegations.total_count
       }
     }
   return clients
