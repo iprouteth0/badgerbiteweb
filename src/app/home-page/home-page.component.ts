@@ -25,32 +25,31 @@ export class HomePageComponent implements OnInit {
   showAbout = false;
   chainValidatorsSubscription: any;
   chain?: Chain;
-  TotalClient?: number;
+  TotalClient: number[] = [];
   ValidatorSet?: any;
-
+  Val?: string;
   
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
   }
 
   ngOnInit(): void {
-    for (let i = 0; i < CHAINS.length; i++) { 
-      if (CHAINS[i].isTestnet == false) {
-        this.chain=CHAINS[i]
+    const z: number[] = []
+    let x=0
+    for (let i = 0; i < 2; i++) { 
+        this.Val = CHAINS[i].Valoper
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
         this.chainValidatorsSubscription = this.chainService.getChainValidators(apiChainId)
-    .subscribe((validators: any) => {
-      if (this.chain) {
-        let clients=this.extractTotalClients(validators);
-        this.TotalClient=this.TotalClient + clients
-        this.ValidatorSet = {
-          clients: clients
-      };
-      }
+        .subscribe((validators: any) => {
+          this.TotalClient[i]=this.extractTotalClients(validators);
+          x = z.reduce((a, b) => a + b, 0);
+          this.ValidatorSet = {
+            clients: this.TotalClient[0]
+          };   
     });
-      }  
-    }
     
+    }
+
 
     this.stateService.chainType.subscribe({
         next: (chainType: string) => {
@@ -143,7 +142,7 @@ export class HomePageComponent implements OnInit {
     let clients = 0;
     for (let i = 0; i < validators.validators.length; i++) {
       let validator = validators.validators[i];
-      if (validator.operator_address == this.chain?.Valoper) {
+      if (validator.operator_address == this.Val) {
           clients = validator.delegations.total_count;
       }
     }
