@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Chain } from "../model/chain";
+import { CHAINS } from '../data/data';
 import { ChainService } from "../service/chain.service";
 import { StateService } from "../service/state.service";
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -20,13 +23,32 @@ export class HomePageComponent implements OnInit {
   searchQuery: string = '';
   chainType = 'all';
   showAbout = false;
+  chainValidatorsSubscription: any;
+  chain?: Chain;
+  TotalClient?: number;
 
   
-  constructor(public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
   }
 
   ngOnInit(): void {
+    for (let i = 0; i < CHAINS.length; i++) { 
+      if (CHAINS[i].isTestnet == false) {
+        this.chain=CHAINS[i]
+        let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
+        this.chainValidatorsSubscription = this.chainService.getChainValidators(apiChainId)
+    .subscribe((validators: any) => {
+      if (this.chain) {
+        let clients=this.extractTotalClients(validators);
+        this.TotalClient=this.TotalClient + clients
+        console.log(`story ${this.TotalClient} story`);
+      }
+    });
+      }  
+    }
+    
+
     this.stateService.chainType.subscribe({
         next: (chainType: string) => {
           this.chainType = chainType;
@@ -109,6 +131,20 @@ export class HomePageComponent implements OnInit {
   }
   open(content: any) {
     this.modalService.open(content, { centered: true });
+  }
+
+
+  extractTotalClients(validators: any): any {
+    validators.validators.sort((a: any, b: any) => b.rank - a.rank)
+    validators.validators.reverse()
+    let clients = 0;
+    for (let i = 0; i < validators.validators.length; i++) {
+      let validator = validators.validators[i];
+      if (validator.operator_address == this.chain?.Valoper) {
+          clients = validator.delegations.total_count;
+      }
+    }
+  return clients
   }
 
 }
