@@ -26,6 +26,7 @@ export class HomePageComponent implements OnInit {
   chainValidatorsSubscription: any;
   chain?: Chain;
   TotalClient?: number;
+  ValidatorSet?: any;
 
   
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
@@ -42,7 +43,9 @@ export class HomePageComponent implements OnInit {
       if (this.chain) {
         let clients=this.extractTotalClients(validators);
         this.TotalClient=this.TotalClient + clients
-        console.log(`story ${this.TotalClient} story`);
+        this.ValidatorSet = {
+          clients: clients
+      };
       }
     });
       }  
