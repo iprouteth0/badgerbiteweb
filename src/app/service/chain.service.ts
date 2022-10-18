@@ -102,6 +102,11 @@ export class ChainService {
       `${environment.BaseValidators}/${apiChainId}`, {responseType: 'json'}
     );
   }
+  getChainDelegations(RestServer: any,Valoper: any) {
+    return this.http.get(
+      `${RestServer}/cosmos/staking/v1beta1/validators/${Valoper}/delegations`, {responseType: 'json'}
+    );
+  }
 
   getChainSnapshotInfo(chain: Chain) {
     const id = chain.id;

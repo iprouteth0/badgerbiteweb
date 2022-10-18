@@ -48,23 +48,22 @@ export class HomePageComponent implements OnInit {
 
 
     this.TotalClients[1]=10
-    const z: number[] = []
-    let x=""
+    let z=""
+    var x = 91
 
-    for (let i = 1; i < CHAINS.length; i++) { 
+    for (let i = 0; i < CHAINS.length; i++) { 
         this.Val = CHAINS[i].Valoper
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
-        this.chainValidatorsSubscription = this.chainService.getChainValidators(apiChainId)
-        .subscribe((validators: any) => {
-          this.TotalClient[i]=(this.extractTotalClients(validators));
-          
-          x += this.TotalClient[1];
-          this.ValidatorSet = {
-            clients: 5
-          };   
+        this.chainValidatorsSubscription = this.chainService.getChainDelegations(CHAINS[i].restServer,CHAINS[i].Valoper)
+        .subscribe((delegations: any) => {
+          x = x + Number(delegations.pagination.total)
+   
     });
     
     }
+    this.ValidatorSet = {
+      clients: x
+    };
   }
 
 
@@ -154,11 +153,9 @@ export class HomePageComponent implements OnInit {
     validators.validators.sort((a: any, b: any) => b.rank - a.rank)
     validators.validators.reverse()
     let clients = 0;
-    for (let i = 0; i < validators.validators.length; i++) {
-      let validator = validators.validators[i];
-      if (validator.operator_address == this.Val) {
-          clients = validator.delegations.total_count;
-          this.TotalClients[1] += validator.delegations.total_count
+    for (let j = 0; j < validators.validators.length; j++) {
+      if (validators.validators[j].operator_address == this.Val) {
+          clients = validators.validators[j].delegations.total_count;
       }
     }
   return clients
