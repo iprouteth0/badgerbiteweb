@@ -30,6 +30,21 @@ export class HomePageComponent implements OnInit {
   Val?: string;
   TotalClients: number[] = [];
   ClientCount:number = 0;
+  clientcount:number = 0;
+
+  
+
+
+
+
+  clientcountstop:any = setInterval(()=>{
+    this.clientcount++;
+    if(this.clientcount == 300)
+    {
+      
+      clearInterval(this.clientcountstop);
+    }
+  },10)
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
@@ -49,8 +64,8 @@ export class HomePageComponent implements OnInit {
     );
 
 
-    this.TotalClients[1]=10
-    let z=""
+
+
     var x = 91
 
     for (let i = 0; i < CHAINS.length; i++) { 
