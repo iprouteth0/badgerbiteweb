@@ -45,6 +45,9 @@ export class Chain {
   hasWasm?: boolean;
   SnapshotProvider?: string;
   Valoper?: string;
+  price?: number;
+  staked?: number;
+  totalassets?: number
 
   constructor(id: string, chainName: string, make: string, statesyncServer: string, genesis: string, version: string, chainId: string, logo:string, snapshotServer: string, rpcServer: string,
               rpcPeer: string, restServer:string, serviceName: string, homeDirectoryName: string, twitter: string, github: string,

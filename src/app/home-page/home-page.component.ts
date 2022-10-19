@@ -24,23 +24,31 @@ export class HomePageComponent implements OnInit {
   chainType = 'all';
   showAbout = false;
   chainValidatorsSubscription: any;
+  chainSummarySubscription: any;
   chain?: Chain;
   public TotalClient: number = 91;
   ValidatorSet?: any;
   Val?: string;
-  TotalClients: number[] = [];
-  ClientCount:number = 0;
-  clientcount:number = 0;
+  TotalTime: number[] = [];
+  assets: number = 10;
+  clientcount: number = 0;
+
+  finished:boolean = false;
 
     clientcountstop:any = setInterval(()=>{
+      this.TotalTime[1]++;
+      if(this.clientcount < this.TotalClient) {
+      this.clientcount++;
+      }
       if (this.TotalClient> 500) {  
-        this.clientcount++;
-        if(this.clientcount == this.TotalClient)
+
+        if(this.TotalTime[1] >= 3000)
         {
           clearInterval(this.clientcountstop);
+          // this.clientcount = this.TotalClient
         }
     }
-    },10)
+    },20)
 
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
@@ -49,20 +57,31 @@ export class HomePageComponent implements OnInit {
 
     var x = 91
     for (let i = 0; i < CHAINS.length; i++) { 
+      let staked = 0
+      let price = 0
         this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
         this.chainValidatorsSubscription = this.chainService.getChainDelegations(CHAINS[i].restServer,CHAINS[i].Valoper)
         .subscribe((delegations: any) => {
           x = x + Number(delegations.pagination.total);
           this.TotalClient += Number(delegations.pagination.total);
+          for(let p = 0; p < delegations.delegation_responses.length; p++){
+            staked += (Number(delegations.delegation_responses[p].balance.amount) / Math.pow(10, CHAINS[i].denomPow))
+          }
+          this.assets += (price * staked)
+
+        });
+        this.chainSummarySubscription = this.chainService.getChainSummary(apiChainId)
+        .subscribe((summary: any) => {
+          price = Number(summary.chain.assets[0].prices.coingecko.usd)
           this.ValidatorSet = {
-            clients: x
+            clients: this.assets
           };
 
-    });
-    
+        });
 
-    }
+
+      }
     
     
 
@@ -87,7 +106,7 @@ export class HomePageComponent implements OnInit {
 
   ngAfterViewInit(): void {
 
-    
+    this.clientcount = this.TotalClient
   }
 
   onSearchQueryChange(newQuery: string) {
