@@ -25,13 +25,14 @@ export class HomePageComponent implements OnInit {
   showAbout = false;
   chainValidatorsSubscription: any;
   chain?: Chain;
-  TotalClient: number[] = [];
+  public TotalClient: number = 91;
   ValidatorSet?: any;
   Val?: string;
   TotalClients: number[] = [];
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
+    
   }
 
   ngOnInit(): void {
@@ -52,18 +53,21 @@ export class HomePageComponent implements OnInit {
     var x = 91
 
     for (let i = 0; i < CHAINS.length; i++) { 
-        this.Val = CHAINS[i].Valoper
+        this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
         this.chainValidatorsSubscription = this.chainService.getChainDelegations(CHAINS[i].restServer,CHAINS[i].Valoper)
         .subscribe((delegations: any) => {
-          x = x + Number(delegations.pagination.total)
-   
+          x = x + Number(delegations.pagination.total);
+          this.TotalClient += Number(delegations.pagination.total);
+          this.ValidatorSet = {
+            clients: x
+          };
+
     });
     
+
     }
-    this.ValidatorSet = {
-      clients: x
-    };
+
   }
 
 
