@@ -32,42 +32,22 @@ export class HomePageComponent implements OnInit {
   ClientCount:number = 0;
   clientcount:number = 0;
 
-  
-
-
-
-
-  clientcountstop:any = setInterval(()=>{
-    this.clientcount++;
-    if(this.clientcount == 300)
-    {
-      
-      clearInterval(this.clientcountstop);
+    clientcountstop:any = setInterval(()=>{
+      if (this.TotalClient> 500) {  
+        this.clientcount++;
+        if(this.clientcount == this.TotalClient)
+        {
+          clearInterval(this.clientcountstop);
+        }
     }
-  },10)
+    },10)
+
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
     
-  }
-
-  ngOnInit(): void {
- 
-
-
-    this.stateService.chainType.subscribe({
-        next: (chainType: string) => {
-          this.chainType = chainType;
-          this.applyChainTypeWithFilter(chainType, this.searchQuery);
-        }
-      }
-    );
-
-
-
 
     var x = 91
-
     for (let i = 0; i < CHAINS.length; i++) { 
         this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
@@ -83,8 +63,25 @@ export class HomePageComponent implements OnInit {
     
 
     }
+    
+    
 
   }
+
+  ngOnInit(): void {
+ 
+
+
+    this.stateService.chainType.subscribe({
+        next: (chainType: string) => {
+          this.chainType = chainType;
+          this.applyChainTypeWithFilter(chainType, this.searchQuery);
+        }
+      }
+    );
+
+  }
+
 
 
 
