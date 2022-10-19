@@ -29,6 +29,7 @@ export class HomePageComponent implements OnInit {
   ValidatorSet?: any;
   Val?: string;
   TotalClients: number[] = [];
+  ClientCount:number = 0;
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
@@ -152,18 +153,6 @@ export class HomePageComponent implements OnInit {
     this.modalService.open(content, { centered: true });
   }
 
-
-  extractTotalClients(validators: any): any {
-    validators.validators.sort((a: any, b: any) => b.rank - a.rank)
-    validators.validators.reverse()
-    let clients = 0;
-    for (let j = 0; j < validators.validators.length; j++) {
-      if (validators.validators[j].operator_address == this.Val) {
-          clients = validators.validators[j].delegations.total_count;
-      }
-    }
-  return clients
-  }
 
 }
 
