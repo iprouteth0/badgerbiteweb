@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
   TotalTime: number[] = [];
   assets: number = 10;
   clientcount: number = 0;
-
+  assetcount:number =0;
   finished:boolean = false;
 
     clientcountstop:any = setInterval(()=>{
@@ -50,40 +50,48 @@ export class HomePageComponent implements OnInit {
     }
     },20)
 
+    assetcountstop:any = setInterval(()=>{
+      this.assetcount++;
+        if(this.assetcount >= this.assets)
+        {
+          clearInterval(this.assetcountstop);
+          // this.clientcount = this.TotalClient
+        }
+    },10)
+
+
+
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
     
 
     var x = 91
+    var Assets = 0
     for (let i = 0; i < CHAINS.length; i++) { 
-      let staked = 0
-      let price = 0
         this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
         this.chainValidatorsSubscription = this.chainService.getChainDelegations(CHAINS[i].restServer,CHAINS[i].Valoper)
         .subscribe((delegations: any) => {
           x = x + Number(delegations.pagination.total);
           this.TotalClient += Number(delegations.pagination.total);
-          for(let p = 0; p < delegations.delegation_responses.length; p++){
-            staked += (Number(delegations.delegation_responses[p].balance.amount) / Math.pow(10, CHAINS[i].denomPow))
-          }
-          this.assets += (price * staked)
-
         });
-        this.chainSummarySubscription = this.chainService.getChainSummary(apiChainId)
+        this.chainSummarySubscription = this.chainService.getChainValidators(apiChainId)
         .subscribe((summary: any) => {
-          price = Number(summary.chain.assets[0].prices.coingecko.usd)
+          for (let k = 0; k < summary.validators.length; k++){
+            if (CHAINS[i].Valoper == summary.validators[k].operator_address || summary.validators[k].moniker.includes("Badger") || summary.validators[k].moniker.includes("badger")){
+              this.assets += Math.floor(Number(summary.validators[k].delegations.total_usd)) || 0
+            }
+          }
           this.ValidatorSet = {
             clients: this.assets
           };
-
+          this.assetcount = CHAINS[0].totalassets!
         });
 
+      }  
 
-      }
-    
-    
+
 
   }
 
@@ -105,6 +113,7 @@ export class HomePageComponent implements OnInit {
 
 
   ngAfterViewInit(): void {
+
 
     this.clientcount = this.TotalClient
   }
