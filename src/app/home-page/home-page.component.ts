@@ -26,13 +26,17 @@ export class HomePageComponent implements OnInit {
   chainValidatorsSubscription: any;
   chainSummarySubscription: any;
   chain?: Chain;
-  public TotalClient: number = 91;
+  public TotalClient: number = 244;
   ValidatorSet?: any;
   Val?: string;
   TotalTime: number[] = [];
-  assets: number = 10;
+  public assets: number = 0;
+  public totalmainnets: number = 0;
+  public totaltestnets: number = 0;
   clientcount: number = 0;
   assetcount:number =0;
+  mainnetcount:number=0;
+  testnetcount:number=0;
   finished:boolean = false;
 
     clientcountstop:any = setInterval(()=>{
@@ -48,51 +52,49 @@ export class HomePageComponent implements OnInit {
           // this.clientcount = this.TotalClient
         }
     }
-    },20)
+    },15)
 
     assetcountstop:any = setInterval(()=>{
-      this.assetcount++;
-        if(this.assetcount >= this.assets)
+      this.TotalTime[2]++;
+      if(this.assetcount < this.assets) {
+      this.assetcount += 182;
+      }
+      if (this.assets > 200000) {  
+
+        if(this.TotalTime[2] >= 3000)
         {
           clearInterval(this.assetcountstop);
           // this.clientcount = this.TotalClient
         }
-    },10)
-
-
-
+    }
+    },1)
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
-    
-
     var x = 91
     var Assets = 0
     for (let i = 0; i < CHAINS.length; i++) { 
         this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
-        this.chainValidatorsSubscription = this.chainService.getChainDelegations(CHAINS[i].restServer,CHAINS[i].Valoper)
-        .subscribe((delegations: any) => {
-          x = x + Number(delegations.pagination.total);
-          this.TotalClient += Number(delegations.pagination.total);
-        });
         this.chainSummarySubscription = this.chainService.getChainValidators(apiChainId)
         .subscribe((summary: any) => {
           for (let k = 0; k < summary.validators.length; k++){
             if (CHAINS[i].Valoper == summary.validators[k].operator_address || summary.validators[k].moniker.includes("Badger") || summary.validators[k].moniker.includes("badger")){
-              this.assets += Math.floor(Number(summary.validators[k].delegations.total_usd)) || 0
+              this.assets += Math.floor(Number(summary.validators[k].delegations.total_usd)) || 0;
+              this.TotalClient += Number(summary.validators[k].delegations.total_count) || 0;
             }
           }
-          this.ValidatorSet = {
-            clients: this.assets
-          };
-          this.assetcount = CHAINS[0].totalassets!
         });
-
+        if (this.chainService.filterByType(CHAINS[i],"mainnet") ){
+          this.mainnetcount++
+        }
+        else if (this.chainService.filterByType(CHAINS[i],"testnet") ){
+          this.testnetcount++
+        }
+        this.ValidatorSet = {
+          clients: this.testnetcount
+        };
       }  
-
-
-
   }
 
   ngOnInit(): void {
