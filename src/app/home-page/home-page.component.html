@@ -1,12 +1,12 @@
 <!-- Hero Start -->
-<section class="bg-half-170 bg-primary d-table w-100" id="home"
+<section class="bg-half-10 bg-primary d-table w-100" id="home"
   style="background: url('assets/img/back.png') center center;">
   <div class="container">
     <p style="text-align:center;"><img src="assets/img/logo2.png" alt="Logo" class="img-fluid" style="max-width: 50%;padding-inline: 0px;"></p>
     <div class="row mt-5 justify-content-center">
       <div class="col-lg-12">
         <div class="title-heading text-center">
-          <h1 class="heading title-dark text-white mb-3">BadgerBite</h1>
+          <h1 class="heading title-dark text-white mb-0">BadgerBite</h1>
           <p class="para-desc mx-auto text-white-50">We are a Union of Experienced Validators spreading among many chains but above all we are a team of crypto enthousiasts driven by our passion! </p>
           <div class="row mt-4 pt-2">
             <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
@@ -67,7 +67,7 @@
                     <img src="assets/img/monitoring.png" class="img-fluid" style="max-width: 50%;padding-inline: 0px;" alt="">
                   </div>
                   <div class="content mt-3">
-                    <h6 class="mb-0"><a href="javascript:void(0)" (click)="open(monitoring)" class="title text-dark">27/7 Monitoring and Alert</a>
+                    <h6 class="mb-0"><a href="javascript:void(0)" (click)="open(monitoring)" class="title text-dark">27/7 Monitor & Alert</a>
                     </h6>
                   </div>
                 </div>
@@ -170,6 +170,43 @@
       <!--end col-->
     </div>
     <!--end row-->
+    <div class="row" id="counter">
+      <div class="col-md-3 col-6 mt-4 pt-2">
+        <div class="counter-box text-center">
+          <img src="assets/img/assets.svg" class="avatar avatar-small" alt="">
+          <h2 class="mb-0 mt-4 text-white">{{assetcount}}</h2>
+          <h6 class="counter-head text-white">Assets</h6>
+        </div>
+        <!--end counter box-->
+      </div>
+    
+      <div class="col-md-3 col-6 mt-4 pt-2">
+        <div class="counter-box text-center">
+          <img src="assets/img/clients.svg" class="avatar avatar-small" alt="">
+          <h2 class="mb-0 mt-4 text-white">{{clientcount}}</h2>
+          <h6 class="counter-head text-white">Clients</h6>
+        </div>
+        <!--end counter box-->
+      </div>
+    
+      <div class="col-md-3 col-6 mt-4 pt-2">
+        <div class="counter-box text-center">
+          <img src="assets/img/server.svg" class="avatar avatar-small" alt="">
+          <h2 class="mb-0 mt-4 text-white">{{mainnetcount}}</h2>
+          <h6 class="counter-head text-white">Mainnets</h6>
+        </div>
+        <!--end counter box-->
+      </div>
+    
+      <div class="col-md-3 col-6 mt-4 pt-2">
+        <div class="counter-box text-center">
+          <img src="assets/img/testnet.svg" class="avatar avatar-small" alt="">
+          <h2 class="mb-0 mt-4 text-white">{{testnetcount}}</h2>
+          <h6 class="counter-head text-white">Testnets</h6>
+        </div>
+        <!--end counter box-->
+      </div>
+    </div>
   </div>
   <!--end container-->
 </section>
@@ -182,43 +219,7 @@
   </div>
 </div>
 <!-- Hero End -->
-<div class="row" id="counter">
-  <div class="col-md-3 col-6 mt-4 pt-2">
-    <div class="counter-box text-center">
-      <img src="assets/images/illustrator/Asset190.svg" class="avatar avatar-small" alt="">
-      <h2 class="mb-0 mt-4">{{assetcount}}</h2>
-      <h6 class="counter-head text-muted">Assets</h6>
-    </div>
-    <!--end counter box-->
-  </div>
 
-  <div class="col-md-3 col-6 mt-4 pt-2">
-    <div class="counter-box text-center">
-      <img src="assets/images/illustrator/Asset189.svg" class="avatar avatar-small" alt="">
-      <h2 class="mb-0 mt-4">{{clientcount}}</h2>
-      <h6 class="counter-head text-muted">Clients</h6>
-    </div>
-    <!--end counter box-->
-  </div>
-
-  <div class="col-md-3 col-6 mt-4 pt-2">
-    <div class="counter-box text-center">
-      <img src="assets/images/illustrator/Asset186.svg" class="avatar avatar-small" alt="">
-      <h2 class="mb-0 mt-4">{{mainnetcount}}</h2>
-      <h6 class="counter-head text-muted">Mainnets</h6>
-    </div>
-    <!--end counter box-->
-  </div>
-
-  <div class="col-md-3 col-6 mt-4 pt-2">
-    <div class="counter-box text-center">
-      <img src="assets/images/illustrator/Asset187.svg" class="avatar avatar-small" alt="">
-      <h2 class="mb-0 mt-4">{{testnetcount}}</h2>
-      <h6 class="counter-head text-muted">Testnets</h6>
-    </div>
-    <!--end counter box-->
-  </div>
-</div>
 
 <div>
 <div class="row">

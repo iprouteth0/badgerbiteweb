@@ -68,6 +68,25 @@ export class HomePageComponent implements OnInit {
         }
     }
     },1)
+    mainnetcountstop:any = setInterval(()=>{
+      this.mainnetcount++
+        if(this.mainnetcount >= this.totalmainnets)
+        {
+          clearInterval(this.mainnetcountstop);
+          // this.clientcount = this.TotalClient
+        }
+   
+    },400)
+    testnetcountstop:any = setInterval(()=>{
+      this.testnetcount++
+        if(this.testnetcount >= this.totaltestnets)
+        {
+          clearInterval(this.testnetcountstop);
+          // this.clientcount = this.TotalClient
+        }
+   
+    },1100)
+
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
@@ -86,10 +105,10 @@ export class HomePageComponent implements OnInit {
           }
         });
         if (this.chainService.filterByType(CHAINS[i],"mainnet") ){
-          this.mainnetcount++
+          this.totalmainnets++
         }
         else if (this.chainService.filterByType(CHAINS[i],"testnet") ){
-          this.testnetcount++
+          this.totaltestnets++
         }
         this.ValidatorSet = {
           clients: this.testnetcount

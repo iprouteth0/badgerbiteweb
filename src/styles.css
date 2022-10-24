@@ -1,6 +1,7 @@
 @import "~prismjs/plugins/toolbar/prism-toolbar.css";
 @import "~prismjs/themes/prism.css";
 @import '../src/assets/css/style.css';
+@import '../src/assets/css/style.min.css';
 @import '../src/assets/css/bootstrap.min.css';
 @import '../src/assets/css/custom.css';
 
