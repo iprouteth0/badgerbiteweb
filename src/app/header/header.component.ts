@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LeftHandMenuService } from "../service/left-hand-menu.service";
 import { StateService } from "../service/state.service";
+import { CHAINS } from '../data/data';
 
 @Component({
   selector: 'app-header',
