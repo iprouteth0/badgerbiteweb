@@ -3,7 +3,6 @@
 }
 
 .about-col {
-  background-color: var(--code-background-color);
   background-clip: content-box;
   border-radius: 1.5rem;
 }
