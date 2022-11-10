@@ -24,7 +24,7 @@ sliderTopbar?: boolean;
   constructor(private leftHandMenuService: LeftHandMenuService,
               public stateService: StateService,private http: HttpClient, public chainService: ChainService) {
 
-    for (let i = 0; i < CHAINS.length; i++) {
+    for (let i = 0; i < CHAINS.length && !CHAINS[i].isTestnet; i++) {
       let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
       this.chain[i]=apiChainId
       let coingekoCoinId = CHAINS[i].coingekoCoinId || CHAINS[i].id;
@@ -37,8 +37,12 @@ sliderTopbar?: boolean;
         let a = Number(this.Change[i]) || 0;
         if (a <= 0) { 
           this.Negative[i]=false
+          this.Change[i]=a.toFixed(2) +'%'
+        } else {
+          // else statements;
+          this.Change[i]='+' + a.toFixed(2) +'%'
         }
-        this.Change[i]=a.toFixed(2) +'%'
+
       });
 
 

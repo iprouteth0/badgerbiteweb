@@ -20,7 +20,22 @@
       </a>
     </div>
   </div>
-  <div class="tagline bg-light" >
+
+  <div class="ticker-container">
+    <div class="ticker-wrapper">
+    <div class="ticker-transition">
+      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+      
+
+    </div>
+    </div>
+  </div>
+
+  <!-- <div class="tagline bg-light" >
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
@@ -32,5 +47,8 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+
 </header>
