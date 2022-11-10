@@ -34,7 +34,8 @@ export class HomePageComponent implements OnInit {
   public totalmainnets: number = 0;
   public totaltestnets: number = 0;
   clientcount: number = 0;
-  assetcount:number =0;
+  assetcount:number = 0;
+  assetcountformat: string=""
   mainnetcount:number=0;
   testnetcount:number=0;
   finished:boolean = false;
@@ -52,12 +53,17 @@ export class HomePageComponent implements OnInit {
           // this.clientcount = this.TotalClient
         }
     }
-    },15)
+    },9)
 
     assetcountstop:any = setInterval(()=>{
       this.TotalTime[2]++;
       if(this.assetcount < this.assets) {
       this.assetcount += 182;
+      this.assetcountformat =this.assetcount.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 0
+      });
       }
       if (this.assets > 200000) {  
 
