@@ -1,25 +1,27 @@
-
+<div class="ticker-container">
+  <div class="ticker-wrapper">
+  <div class="ticker-transition">
+    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+    
+  </div>
+  </div>
+</div>
 <header id="topnav" class="defaultscroll sticky" (window:scroll)="windowScroll()" [class]="navClass"
   [ngClass]="{'tagline-height': sliderTopbar == true}">
   
-  <div class="ticker-container">
-    <div class="ticker-wrapper">
-    <div class="ticker-transition">
-      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-      <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-      
 
-    </div>
-    </div>
-  </div>
   <div class="container">
     <div class="logo" routerLink="/" (click)="stateService.chainType.next('all')">
       <img class="logo-image" src="assets/img/logo.svg" alt="BadgerBite">
       <p class="title">BadgerBite</p>
     </div>
+
+
+
     <div>
       <a class="btn btn-block btn-social btn-twitter shadow-none" href="https://twitter.com/bite_badger" target="_blank">
         <span class="social-icon fa-brands fa-twitter"></span>
@@ -34,9 +36,22 @@
         <span class="burger-icon fa-solid fa-bars"></span>
       </a>
     </div>
+    <div class="menu-extras">
+      <div class="menu-item">
+        <!-- Mobile menu toggle-->
+        <a class="navbar-toggle" id="isToggle" (click)="toggleMenu()" [ngClass]="{'open': isCondensed === true}">
+          <div class="lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </a>
+        <!-- End mobile menu toggle-->
+      </div>
+    </div>
   </div>
 
-
+  
 
   <!-- <div class="tagline bg-light" >
     <div class="container-fluid">

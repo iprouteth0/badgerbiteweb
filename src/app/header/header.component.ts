@@ -5,6 +5,8 @@ import { CHAINS } from '../data/data';
 import { HttpClient } from '@angular/common/http';
 import { ChainService } from "../service/chain.service";
 import { Chain } from "../model/chain";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,17 +15,26 @@ import { Chain } from "../model/chain";
 })
 export class HeaderComponent implements OnInit {
   @Input() navClass: string = "nav-light";
+  @Input() sliderTopbar: boolean=true;
+  @Input() buttonList: boolean=true;
+
   chain: String[] = [];
   ChainId: String[] = [];
   Price: String[] = [];
   Change: String[] = [];
   Negative: Boolean[] = [];
+  isCondensed: Boolean=false
   chainSummarySubscription: any;
 
-sliderTopbar?: boolean;
+// sliderTopbar?: boolean;
 
   constructor(private leftHandMenuService: LeftHandMenuService,
-              public stateService: StateService,private http: HttpClient, public chainService: ChainService) {
+              public stateService: StateService,private http: HttpClient, public chainService: ChainService,private router: Router, private modalService: NgbModal) {
+                this.router.events.forEach((event) => {
+                  if (event instanceof NavigationEnd) {
+                    // this._activateMenuDropdown();
+                  }
+                });
 
     for (let i = 0; i < CHAINS.length && !CHAINS[i].isTestnet; i++) {
       let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
@@ -87,6 +98,9 @@ sliderTopbar?: boolean;
 
     return price
   }
+
+
+
   windowScroll() {
     if (
       document.body.scrollTop > 50 ||
@@ -105,6 +119,14 @@ sliderTopbar?: boolean;
       } else {
         document.getElementById("back-to-top")!.style.display = "none";
       }
+    }
+  }
+  toggleMenu() {
+    this.isCondensed = !this.isCondensed;
+    if (this.isCondensed) {
+      document.getElementById("navigation")!.style.display = "block";
+    } else {
+      document.getElementById("navigation")!.style.display = "none";
     }
   }
 
