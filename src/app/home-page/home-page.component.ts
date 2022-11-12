@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class HomePageComponent implements OnInit {
-
+  navClass = 'nav-light';
   mainnetChains: Chain[] = [];
   testnetChains: Chain[] = [];
   archiveChains: Chain[] = [];

@@ -12,6 +12,7 @@ import { Chain } from "../model/chain";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input() navClass: string = "nav-light";
   chain: String[] = [];
   ChainId: String[] = [];
   Price: String[] = [];
@@ -86,4 +87,25 @@ sliderTopbar?: boolean;
 
     return price
   }
+  windowScroll() {
+    if (
+      document.body.scrollTop > 50 ||
+      document.documentElement.scrollTop > 50
+    ) {
+      document.getElementById("topnav")!.classList.add("nav-sticky");
+    } else {
+      document.getElementById("topnav")!.classList.remove("nav-sticky");
+    }
+    if (document.getElementById("back-to-top")) {
+      if (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 100
+      ) {
+        document.getElementById("back-to-top")!.style.display = "inline";
+      } else {
+        document.getElementById("back-to-top")!.style.display = "none";
+      }
+    }
+  }
+
 }

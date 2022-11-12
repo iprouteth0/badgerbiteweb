@@ -4,7 +4,7 @@
 @import '../src/assets/css/style.min.css';
 @import '../src/assets/css/bootstrap.min.css';
 @import '../src/assets/css/custom.css';
-
+@import '../src/assets/css/colors/default.css';
 @font-face {
   font-family: Monaco;
   src: url(src/assets/font/Monaco.woff) format("opentype");

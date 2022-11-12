@@ -9,6 +9,7 @@ import { LeftHandMenuService } from "./service/left-hand-menu.service";
 })
 export class AppComponent {
   title = 'badgerbite';
+   addclass: string='bg-white';
 
   constructor(@Inject(DOCUMENT) private document: Document,
               private leftHandMenuService: LeftHandMenuService) {
