@@ -1,13 +1,14 @@
-<div class="ticker-container">
-  <div class="ticker-wrapper">
-  <div class="ticker-transition">
-    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-    <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
-    
-  </div>
+<div class="tagline bg-light" >
+  <div class="ticker-container">
+    <div class="ticker-wrapper">
+      <div class="ticker-transition">
+        <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+        <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+        <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+        <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+        <li *ngFor="let user of chain; index as i" class="list-inline-item px-2 mb-0" style="text-transform:uppercase;"><b>{{this.ChainId[i]}}</b> {{this.Price[i]}} <span *ngIf="Negative[i] == false" class="text-danger">({{this.Change[i]}})</span><span *ngIf="Negative[i] == true" class="text-success">({{this.Change[i]}})</span></li>
+      </div>
+    </div>
   </div>
 </div>
 <header id="topnav" class="defaultscroll sticky" (window:scroll)="windowScroll()" [class]="navClass"
@@ -20,7 +21,54 @@
       <p class="title">BadgerBite</p>
     </div>
 
-
+    <div id="navigation">
+      <ul class="navigation-menu" [class]="navClass">
+        <li><a routerLink="/" class="nav-link-ref">Home</a></li>
+        
+        <li class="has-submenu">
+          <a href="javascript:void(0)" (click)="onMenuClick($event)">Chains</a><span class="menu-arrow"></span>
+          <ul class="submenu">
+            <li class="has-submenu"><a href="javascript:void(0)" (click)="onMenuClick($event)"> Mainnets </a><span
+                class="submenu-arrow"></span>
+              <ul class="submenu">
+                <li *ngFor="let user of chain; index as i"><a class="nav-link-ref" routerLink="/{{this.ChainId[i]}}"> {{this.ChainId[i]}}</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu"><a href="javascript:void(0)" (click)="onMenuClick($event)"> Testnets </a><span
+                class="submenu-arrow"></span>
+              <ul class="submenu">
+                <li *ngFor="let user of testnet; index as k"><a class="nav-link-ref" routerLink="/{{this.testnet[k]}}/installation"> {{this.testnet[k]}}</a></li>
+              </ul>
+            </li>
+           
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="javascript:void(0)" (click)="onMenuClick($event)">Videos</a><span class="menu-arrow"></span>
+          <ul class="submenu megamenu">
+            <li>
+              <ul>
+                <li class="megamenu-head">Modern Portfolio</li>
+                <li><a class="nav-link-ref" routerLink="/portfolio-modern-two">Two Column</a></li>
+                <li><a class="nav-link-ref" routerLink="/portfolio-modern-three">Three Column</a></li>
+                <li><a class="nav-link-ref" routerLink="/portfolio-modern-four">Four Column</a></li>
+                <li><a class="nav-link-ref" routerLink="/portfolio-modern-five">Five Column</a></li>
+                <li><a class="nav-link-ref" routerLink="/portfolio-modern-six">Six Column</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="javascript:void(0)" (click)="onMenuClick($event)">Aggregator</a><span class="menu-arrow"></span>
+          <ul class="submenu">
+            <li><a class="nav-link-ref" routerLink="/documentation">Documentation</a></li>
+            <li><a class="nav-link-ref" routerLink="/changelog">Changelog</a></li>
+            <li><a class="nav-link-ref" routerLink="/components">Components</a></li>
+            <li><a class="nav-link-ref" routerLink="/widget">Widget</a></li>
+          </ul>
+        </li>
+      </ul>
+      </div>
 
     <div>
       <a class="btn btn-block btn-social btn-twitter shadow-none" href="https://twitter.com/bite_badger" target="_blank">
@@ -49,103 +97,10 @@
         <!-- End mobile menu toggle-->
       </div>
     </div>
+
   </div>
 
-  <ul class="navigation-menu" [class]="navClass">
-    <li><a routerLink="/" class="nav-link-ref">Home</a></li>
-    
-    <li class="has-submenu">
-      <a href="javascript:void(0)" (click)="onMenuClick($event)">Chains</a><span class="menu-arrow"></span>
-      <ul class="submenu">
-        <li class="has-submenu"><a href="javascript:void(0)" (click)="onMenuClick($event)"> Mainnets </a><span
-            class="submenu-arrow"></span>
-          <ul class="submenu">
-            <li *ngFor="let user of chain; index as i"><a class="nav-link-ref" routerLink="/{{this.ChainId[i]}}"> {{this.ChainId[i]}}</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu"><a href="javascript:void(0)" (click)="onMenuClick($event)"> Testnets </a><span
-            class="submenu-arrow"></span>
-          <ul class="submenu">
-            <li><a class="nav-link-ref" routerLink="/account-profile">Profile</a></li>
-            <li><a class="nav-link-ref" routerLink="/account-members">Members </a>
-            </li>
-            <li><a class="nav-link-ref" routerLink="/account-works">Works </a></li>
-            <li><a class="nav-link-ref" routerLink="/account-messages">Messages </a>
-            </li>
-            <li><a class="nav-link-ref" routerLink="/account-payments">Payments </a>
-            </li>
-            <li><a class="nav-link-ref" routerLink="/account-setting">Setting</a></li>
-            <li><a class="nav-link-ref" routerLink="/page-invoice">Invoice</a></li>
-          </ul>
-        </li>
-       
-      </ul>
-    </li>
-    <li class="has-submenu">
-      <a href="javascript:void(0)" (click)="onMenuClick($event)">Portfolio</a><span class="menu-arrow"></span>
-      <ul class="submenu megamenu">
-        <li>
-          <ul>
-            <li class="megamenu-head">Modern Portfolio</li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-modern-two">Two Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-modern-three">Three Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-modern-four">Four Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-modern-five">Five Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-modern-six">Six Column</a></li>
-          </ul>
-        </li>
-
-        <li>
-          <ul>
-            <li class="megamenu-head">Classic Portfolio</li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-classic-two">Two Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-classic-three">Three Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-classic-four">Four Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-classic-five">Five Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-classic-six">Six Column</a></li>
-          </ul>
-        </li>
-        <li>
-          <ul>
-            <li class="megamenu-head">Grid Portfolio</li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-grid-two">Two Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-grid-three">Three Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-grid-four">Four Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-grid-five">Five Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-grid-six">Six Column</a></li>
-          </ul>
-        </li>
-        <li>
-          <ul>
-            <li class="megamenu-head">Masonry Portfolio</li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-masonry-two">Two Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-masonry-three">Three Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-masonry-four">Four Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-masonry-five">Five Column</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-masonry-six">Six Column</a></li>
-          </ul>
-        </li>
-        <li>
-          <ul>
-            <li class="megamenu-head">Portfolio Detail</li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-detail-one">Portfolio One</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-detail-two">Portfolio Two</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-detail-three">Portfolio Three</a></li>
-            <li><a class="nav-link-ref" routerLink="/portfolio-detail-four">Portfolio Four</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li class="has-submenu">
-      <a href="javascript:void(0)" (click)="onMenuClick($event)">Docs</a><span class="menu-arrow"></span>
-      <ul class="submenu">
-        <li><a class="nav-link-ref" routerLink="/documentation">Documentation</a></li>
-        <li><a class="nav-link-ref" routerLink="/changelog">Changelog</a></li>
-        <li><a class="nav-link-ref" routerLink="/components">Components</a></li>
-        <li><a class="nav-link-ref" routerLink="/widget">Widget</a></li>
-      </ul>
-    </li>
-  </ul>
+  
 
   <!-- <div class="tagline bg-light" >
     <div class="container-fluid">

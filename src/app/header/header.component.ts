@@ -55,11 +55,16 @@ export class HeaderComponent implements OnInit {
           // else statements;
           this.Change[i]='+' + a.toFixed(2) +'%'
         }
-
       });
-
-
-                }            
+    } 
+    let p=0
+    for (let k = 0; k < CHAINS.length; k++) {
+      if (CHAINS[k].isTestnet){
+        let apiChainId = CHAINS[k].apiChainId || CHAINS[k].id;
+        this.testnet[p]=apiChainId
+        p++
+      }
+    }          
 
   }
 
