@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
                   }
                 });
 
-    for (let i = 0; i < CHAINS.length && !CHAINS[i].isTestnet; i++) {
+    for (let i = 0; i < CHAINS.length && !CHAINS[i].isTestnet && !CHAINS[i].isArchive; i++) {
       let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
       this.chain[i]=apiChainId
       let coingekoCoinId = CHAINS[i].coingekoCoinId || CHAINS[i].id;

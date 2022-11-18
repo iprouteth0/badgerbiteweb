@@ -99,6 +99,7 @@ export class HomePageComponent implements OnInit {
     var x = 91
     var Assets = 0
     for (let i = 0; i < CHAINS.length; i++) { 
+      if (CHAINS[i].isArchive != true){
         this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
         this.chainSummarySubscription = this.chainService.getChainValidators(apiChainId)
@@ -119,7 +120,9 @@ export class HomePageComponent implements OnInit {
         this.ValidatorSet = {
           clients: this.testnetcount
         };
+
       }  
+    }
   }
 
   ngOnInit(): void {
