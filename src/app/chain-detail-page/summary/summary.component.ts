@@ -63,6 +63,7 @@ Chart.register(
 })
 export class SummaryComponent implements OnInit {
 
+  sliderTopbar = false;
   chain?: Chain;
   price?: string;
   priceunformatted?: any;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Chain } from "../model/chain";
 import { CHAINS } from '../data/data';
 import { ChainService } from "../service/chain.service";
@@ -16,6 +16,8 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class HomePageComponent implements OnInit {
+
+  @Input() sliderTopbar: boolean=false;
   navClass = 'nav-light';
   mainnetChains: Chain[] = [];
   testnetChains: Chain[] = [];

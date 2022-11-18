@@ -14,10 +14,12 @@ import { Router, NavigationEnd } from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
   @Input() navClass: string = "nav-light";
   @Input() sliderTopbar: boolean=true;
   @Input() buttonList: boolean=true;
 
+  TopbarShow?: Boolean
   chain: String[] = [];
   testnet: String[] = [];
   ChainId: String[] = [];

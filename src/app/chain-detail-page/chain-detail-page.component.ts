@@ -11,6 +11,7 @@ import { ChainService } from "../service/chain.service";
 export class ChainDetailPageComponent implements OnInit {
 
   chain?: Chain;
+  TopbarShow = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
