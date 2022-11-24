@@ -43,11 +43,12 @@ export class HeaderComponent implements OnInit {
       let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
       this.chain[i]=apiChainId
       let coingekoCoinId = CHAINS[i].coingekoCoinId || CHAINS[i].id;
+      let DexID = CHAINS[i].DexScreener || "";
       this.ChainId[i]=apiChainId
-      this.chainSummarySubscription = this.chainService.getCoingekoSummary(coingekoCoinId)
-      .subscribe((coingekoSummary: any) => {
-        this.Price[i] = this.extractPrice(coingekoSummary);
-        this.Change[i] = this.extractPriceChange(coingekoSummary);
+      this.chainSummarySubscription = this.chainService.getDexSummary(DexID)
+      .subscribe((DexSummary: any) => {
+        this.Price[i] = this.extractDexPrice(DexSummary);
+        this.Change[i] = this.extractDexPriceChange(DexSummary);
         this.Negative[i]=true
         let a = Number(this.Change[i]) || 0;
         if (a <= 0) { 
@@ -88,13 +89,24 @@ export class HeaderComponent implements OnInit {
       maximumSignificantDigits: 4
     }).format(price);
   }
+
+  extractDexPrice(DexSummary: any): string {
+    let price = DexSummary?.pair?.priceUsd;
+    if (!price) {
+      return '-';
+    }
+    return Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumSignificantDigits: 4
+    }).format(price);
+  }
   
   extractPriceUnformated(coingekoSummary: any): any {
     let price = coingekoSummary?.market_data?.current_price?.usd;
     if (!price) {
       return '-';
     }
-
     return price
   }
 
@@ -103,9 +115,16 @@ export class HeaderComponent implements OnInit {
     if (!price) {
       return '-';
     }
-
     return price
   }
+  extractDexPriceChange(DexSummary: any): any {
+    let price = DexSummary?.pair?.priceChange?.h24;
+    if (!price) {
+      return '-';
+    }
+    return price
+  }
+
 
   _activateMenuDropdown() {
     /**

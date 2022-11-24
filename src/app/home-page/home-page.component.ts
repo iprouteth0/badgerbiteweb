@@ -27,11 +27,15 @@ export class HomePageComponent implements OnInit {
   showAbout = false;
   chainValidatorsSubscription: any;
   chainSummarySubscription: any;
+  chainSummarySubscription2: any;
   chain?: Chain;
   public TotalClient: number = 244;
   ValidatorSet?: any;
   Val?: string;
   TotalTime: number[] = [];
+  
+  tokenakia: number = 0
+
   public assets: number = 0;
   public totalmainnets: number = 0;
   public totaltestnets: number = 0;
@@ -60,14 +64,14 @@ export class HomePageComponent implements OnInit {
     assetcountstop:any = setInterval(()=>{
       this.TotalTime[2]++;
       if(this.assetcount < this.assets) {
-      this.assetcount += 182;
+      this.assetcount += 584;
       this.assetcountformat =this.assetcount.toLocaleString("en-US", {
         style: "currency",
         currency: "USD",
         minimumFractionDigits: 0
       });
       }
-      if (this.assets > 200000) {  
+      if (this.assets > 300000) {  
 
         if(this.TotalTime[2] >= 3000)
         {
@@ -98,21 +102,34 @@ export class HomePageComponent implements OnInit {
 
   constructor(private http: HttpClient, public chainService: ChainService, public stateService: StateService,config: NgbModalConfig, private modalService: NgbModal) {
     this.applyChainTypeWithFilter(this.chainType, "");
-    var x = 91
-    var Assets = 0
     for (let i = 0; i < CHAINS.length; i++) { 
       if (CHAINS[i].isArchive != true){
+        this.tokenakia=0;
         this.Val = CHAINS[i].Valoper;
         let apiChainId = CHAINS[i].apiChainId || CHAINS[i].id;
+        let DexID = CHAINS[i].DexScreener || "";
+        const Price: number[] = [];
+        const tokens: number[] = [];
+        this.chainSummarySubscription2 = this.chainService.getDexSummary(DexID)
+        .subscribe((DexSummary: any) => {
+          let pricee = Number(DexSummary.pair.priceUsd);
         this.chainSummarySubscription = this.chainService.getChainValidators(apiChainId)
         .subscribe((summary: any) => {
+
           for (let k = 0; k < summary.validators.length; k++){
             if (CHAINS[i].Valoper == summary.validators[k].operator_address || summary.validators[k].moniker.includes("Badger") || summary.validators[k].moniker.includes("badger")){
-              this.assets += Math.floor(Number(summary.validators[k].delegations.total_usd)) || 0;
+              // this.assets += Math.floor(Number(summary.validators[k].delegations.total_usd)) || 0;
               this.TotalClient += Number(summary.validators[k].delegations.total_count) || 0;
+              let tokenss = Number(summary.validators[k].delegations.total_tokens_display);
+              this.assets += (tokenss * pricee) 
             }
           }
         });
+        });
+
+        
+
+
         if (this.chainService.filterByType(CHAINS[i],"mainnet") ){
           this.totalmainnets++
         }
@@ -174,6 +191,13 @@ export class HomePageComponent implements OnInit {
     }
   }
 
+  extractDexPriceUnformatted(DexSummary: any): number {
+    let price = DexSummary.pair.priceUsd;
+    // if (!price) {
+    //   return 0;
+    // }
+    return Number(price)
+  }
   /**
    * Change theme color
    */

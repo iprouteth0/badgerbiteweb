@@ -67,6 +67,14 @@ export class ChainService {
     );
   }
 
+  getDexSummary(DexScreenerId: string) {
+    return this.http.get(
+      `${DexScreenerId}`, {responseType: 'json'}
+    );
+  }
+
+
+
   getCoingekoMarketData(coingekoCoinId: string, timeIntervalDays: number) {
     return this.http.get(
       `https://api.coingecko.com/api/v3/coins/${coingekoCoinId}/market_chart?vs_currency=usd&days=${timeIntervalDays}&interval=daily`, {responseType: 'json'}

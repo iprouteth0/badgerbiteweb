@@ -165,7 +165,7 @@ export const CHAINS: Chain[] = [
     denomName: "udvpn",
     denomPow: 6,
     isProjectSupportUs: true,
-    DexScreener: "",
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/5",
     githubRepoName: 'hub'
   },
   {
@@ -534,7 +534,7 @@ export const CHAINS: Chain[] = [
     denomPow: 6,
     isArchive: true,
     archiveReason: "Out Of active Set",
-    DexScreener: "",
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/557",
     // newWayUnsafeResetAll: true,
     githubRepoName: 'ixo-blockchain'
   },
@@ -563,7 +563,7 @@ export const CHAINS: Chain[] = [
     newWayUnsafeResetAll: true,
     isArchive: true,
     archiveReason: "BadgerBite, in order to protect their interests and community, no longer support Echelon after latest events.",
-    DexScreener: "",
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/747",
     githubRepoName: 'echelonfoundation'
   },
   {
