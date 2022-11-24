@@ -36,6 +36,7 @@ export class Chain {
   isProjectSupportUs?: boolean;
   newWayUnsafeResetAll?: boolean;
   isTestnet?: boolean;
+  DexScreener?: string;
   hardwareRequirements?: string;
   githubRepoName?: string;
   isArchive?: boolean;

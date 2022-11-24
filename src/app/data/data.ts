@@ -32,6 +32,7 @@ export const CHAINS: Chain[] = [
     denomPow: 6,
     isProjectSupportUs: true,
     newWayUnsafeResetAll: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/777",
     githubRepoName: 'odin-core'
   },
   {
@@ -65,6 +66,7 @@ export const CHAINS: Chain[] = [
     denomPow: 6,
     isProjectSupportUs: true,
     newWayUnsafeResetAll: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/571",
     githubRepoName: 'bcna'
   },
   {
@@ -97,6 +99,7 @@ export const CHAINS: Chain[] = [
     denomName: "ubtsg",
     denomPow: 6,
     newWayUnsafeResetAll: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/573",
     githubRepoName: 'go-bitsong'
   },
   {
@@ -128,6 +131,7 @@ export const CHAINS: Chain[] = [
     Valoper: "desmosvaloper1alcd0qxkygqrxew82rxf75f8ajwpycvr9jfk3n",
     denomName: "udsm",
     denomPow: 6,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/619",
     githubRepoName: 'desmos'
   },
   {
@@ -161,6 +165,7 @@ export const CHAINS: Chain[] = [
     denomName: "udvpn",
     denomPow: 6,
     isProjectSupportUs: true,
+    DexScreener: "",
     githubRepoName: 'hub'
   },
   {
@@ -194,6 +199,7 @@ export const CHAINS: Chain[] = [
     isProjectSupportUs: true,
     denomName: "ucrbrus",
     denomPow: 6,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/662",
     githubRepoName: 'cerberus'
   },
   {
@@ -227,6 +233,7 @@ export const CHAINS: Chain[] = [
     denomName: "uhuahua",
     denomPow: 6,
     newWayUnsafeResetAll: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/605",
     githubRepoName: 'chihuahua'
   },
   {
@@ -260,6 +267,7 @@ export const CHAINS: Chain[] = [
     denomPow: 6,
     isProjectSupportUs: false,
     coingekoCoinId: "darcmatter-coin",
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/637",
     githubRepoName: 'konstellation'
   },
   {
@@ -292,6 +300,7 @@ export const CHAINS: Chain[] = [
     denomName: "udec",
     denomPow: 6,
     isProjectSupportUs: false,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/644",
     githubRepoName: 'decentr'
   },
   {
@@ -326,6 +335,7 @@ export const CHAINS: Chain[] = [
     denomPow: 6,
     coingekoCoinId: "certik",
     isProjectSupportUs: false,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/energi/0xc59f04e41b9a6d0d2ee5a1235135308989524ada",
     githubRepoName: 'shentu'
   },
   {
@@ -356,6 +366,7 @@ export const CHAINS: Chain[] = [
     Valoper: "rizonvaloper13227ud0cz65pmt6kvkfjt2jkz7z293ddg0speh",
     denomName: "uatolo",
     denomPow: 6,
+    DexScreener: "",
     githubRepoName: 'rizon'
   },
   {
@@ -388,6 +399,7 @@ export const CHAINS: Chain[] = [
     coingekoCoinId: "e-money",
     denomPow: 6,
     // newWayUnsafeResetAll: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/463",
     githubRepoName: 'em-ledger'
   },
   {
@@ -420,6 +432,8 @@ export const CHAINS: Chain[] = [
     coingekoCoinId: "jackal-protocol",
     denomPow: 6,
     newWayUnsafeResetAll: true,
+    isProjectSupportUs: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/832",
     githubRepoName: 'JackalLabs'
   },
   {
@@ -452,6 +466,7 @@ export const CHAINS: Chain[] = [
     coingekoCoinId: "vidulum",
     denomPow: 6,
     // newWayUnsafeResetAll: true,
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/613",
     githubRepoName: 'vidulum'
   },
   {
@@ -483,7 +498,9 @@ export const CHAINS: Chain[] = [
     denomName: "uglx",
     coingekoCoinId: "",
     denomPow: 6,
+    isArchive: true,
     // newWayUnsafeResetAll: true,
+    DexScreener: "",
     githubRepoName: 'galaxy'
   },
   {
@@ -517,6 +534,7 @@ export const CHAINS: Chain[] = [
     denomPow: 6,
     isArchive: true,
     archiveReason: "Out Of active Set",
+    DexScreener: "",
     // newWayUnsafeResetAll: true,
     githubRepoName: 'ixo-blockchain'
   },
@@ -545,6 +563,7 @@ export const CHAINS: Chain[] = [
     newWayUnsafeResetAll: true,
     isArchive: true,
     archiveReason: "BadgerBite, in order to protect their interests and community, no longer support Echelon after latest events.",
+    DexScreener: "",
     githubRepoName: 'echelonfoundation'
   },
   {
