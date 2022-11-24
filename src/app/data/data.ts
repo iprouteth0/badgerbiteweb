@@ -394,7 +394,7 @@ export const CHAINS: Chain[] = [
     id: "jackal",
     chainName: "Jackal",
     chainId: "jackal-1",
-    logo: "jkl.png",
+    logo: "jackal.svg",
     snapshotServer: "https://www.polkachu.com/tendermint_snapshots/jackal",
     SnapshotProvider: "Polkachu",
     rpcServer: "https://rpc.cosmos.directory/jackal",
