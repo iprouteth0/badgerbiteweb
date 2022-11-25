@@ -14,6 +14,7 @@ export class ChainCardComponent implements OnInit {
   gov?: any;
   summary?: any;
   chainSummarySubscription: any;
+  chainSummarySubscription2: any;
   price?: string;
   @Input() chain?: Chain;
 
@@ -38,11 +39,17 @@ export class ChainCardComponent implements OnInit {
         this.summary = summary;
       });
       let coingekoCoinId = this.chain!.coingekoCoinId || this.chain!.id;
-      this.chainSummarySubscription = this.chainService.getCoingekoSummary(coingekoCoinId)
+      let DexID = this.chain!.DexScreener || "";
+      this.chainSummarySubscription = this.chainService.getDexSummary(DexID)
       .subscribe((coingekoSummary: any) => {
-        this.price = this.extractPrice(coingekoSummary);
+        this.price = this.extractDexPrice(coingekoSummary);
       }); 
-
+      if (this.chain!.DexScreener===""){
+        this.chainSummarySubscription2 = this.chainService.getCoingekoSummary(coingekoCoinId)
+        .subscribe((coingekoSummar: any) => {
+         this.price = this.extractPrice(coingekoSummar);
+        });
+      }
   }
 
   GetGov(gov: any): boolean {
@@ -64,6 +71,18 @@ return Id
 }
 extractPrice(coingekoSummary: any): string {
   let price = coingekoSummary?.market_data?.current_price?.usd;
+  if (!price) {
+    return '-';
+  }
+  return Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumSignificantDigits: 4
+  }).format(price);
+}
+
+extractDexPrice(DexSummary: any): string {
+  let price = DexSummary?.pair?.priceUsd;
   if (!price) {
     return '-';
   }

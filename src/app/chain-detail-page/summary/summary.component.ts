@@ -142,6 +142,13 @@ export class SummaryComponent implements OnInit {
           }
         });
 
+        let DexID = this.chain.DexScreener || "";
+        this.chainSummarySubscription = this.chainService.getDexSummary(DexID)
+        .subscribe((coingekoSummary: any) => {
+          this.price = this.extractDexPrice(coingekoSummary);
+          this.priceunformatted = this.extractDexPriceUnformatted(coingekoSummary);
+        });  
+
       this.coingekoMarketDataSubscription = this.chainService.getCoingekoMarketData(coingekoCoinId, this.CHART_INTERVAL_DAYS)
         .subscribe((coingekoMarketData: any) => {
           this.drawPriceChart(coingekoMarketData);
@@ -211,6 +218,18 @@ export class SummaryComponent implements OnInit {
       maximumSignificantDigits: 4
     }).format(price);
   }
+
+  extractDexPrice(DexSummary: any): string {
+    let price = DexSummary?.pair?.priceUsd;
+    if (!price) {
+      return '-';
+    }
+    return Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumSignificantDigits: 4
+    }).format(price);
+  }
   
   extractPriceUnformated(coingekoSummary: any): any {
     let price = coingekoSummary?.market_data?.current_price?.usd;
@@ -218,6 +237,14 @@ export class SummaryComponent implements OnInit {
       return '-';
     }
     return price
+  }
+
+  extractDexPriceUnformatted(DexSummary: any): any {
+    let price = DexSummary.pair.priceUsd;
+    // if (!price) {
+    //   return 0;
+    // }
+    return Number(price)
   }
 
   extractInflation(summary: any): string {
@@ -346,8 +373,8 @@ export class SummaryComponent implements OnInit {
     let assets = 0;
     for (let i = 0; i < validators.validators.length; i++) {
       let validator = validators.validators[i];
-      if (validator.operator_address == this.chain?.Valoper) {
-          assets = Math.round(validator.tokens) * price / pow ;
+      if (validator.operator_address == this.chain?.Valoper || validator.moniker.includes("Badger") || validator.moniker.includes("badger")) {
+          assets += Math.round(validator.tokens) * price / pow ;
       }
     }
   return Intl.NumberFormat('en-US', {

@@ -366,6 +366,7 @@ export const CHAINS: Chain[] = [
     Valoper: "rizonvaloper13227ud0cz65pmt6kvkfjt2jkz7z293ddg0speh",
     denomName: "uatolo",
     denomPow: 6,
+    coingekoCoinId: "rizon",
     DexScreener: "",
     githubRepoName: 'rizon'
   },
