@@ -199,6 +199,8 @@ export const CHAINS: Chain[] = [
     isProjectSupportUs: true,
     denomName: "ucrbrus",
     denomPow: 6,
+    isArchive: true,
+    archiveReason: "Project ended",
     DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/662",
     githubRepoName: 'cerberus'
   },
@@ -466,7 +468,7 @@ export const CHAINS: Chain[] = [
     denomName: "uvdl",
     coingekoCoinId: "vidulum",
     denomPow: 6,
-    // newWayUnsafeResetAll: true,
+    newWayUnsafeResetAll: true,
     DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/613",
     githubRepoName: 'vidulum'
   },
@@ -533,10 +535,10 @@ export const CHAINS: Chain[] = [
     denomName: "uixo",
     coingekoCoinId: "ixo",
     denomPow: 6,
-    isArchive: true,
-    archiveReason: "Out Of active Set",
+    // isArchive: true,
+    // archiveReason: "Out Of active Set",
     DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/557",
-    // newWayUnsafeResetAll: true,
+    newWayUnsafeResetAll: true,
     githubRepoName: 'ixo-blockchain'
   },
   {
