@@ -32,7 +32,7 @@ export const CHAINS: Chain[] = [
     denomPow: 9,
     isProjectSupportUs: true,
     newWayUnsafeResetAll: true,
-    DexScreener: "https://dexscreener.com/osmosis/602",
+    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/602",
     githubRepoName: 'cheqd-node'
   },
   {
