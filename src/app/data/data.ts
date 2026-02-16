@@ -138,7 +138,7 @@ export const CHAINS: Chain[] = [
     DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/832",
     githubRepoName: 'JackalLabs'
   },
-    id: "fetch.ai",
+    id: "fetch",
     chainName: "fetch.ai",
     chainId: "fetchhub-4",
     logo: "jackal.svg",
@@ -172,4 +172,5 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'fetchd'
   },
 ]
+
 
