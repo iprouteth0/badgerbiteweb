@@ -138,41 +138,8 @@ export const CHAINS: Chain[] = [
     DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/832",
     githubRepoName: 'JackalLabs'
   },
-#  {
-#    id: "fetchhub",
-#    chainName: "fetchhub",
-#    chainId: "fetchhub-4",
-#    logo: "fet.svg",
-#    snapshotServer: "https://www.polkachu.com/tendermint_snapshots/fetch",
-#    SnapshotProvider: "Polkachu",
-#    rpcServer: "https://rpc.cosmos.directory/fetchhub",
-#    statesyncServer: "https://fetch-api.polkachu.com:443",
-#    restServer: "https://fetch-api.polkachu.com/", 
-#    rpcPeer: "fda1f87472c9c2ee89a0ba36a9a9cc38f96e283a@198.244.212.27:26656",
-#    serviceName: "fetchd",
-#    version: "0.14.1",
-#    seeds: "17693da418c15c95d629994a320e2c4f51a8069b@connect-fetchhub.fetch.ai:36456,ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:15256,ebc272824924ea1a27ea3183dd0b9ba713494f83@fetchhub-mainnet-seed.autostake.com:27266,8542cd7e6bf9d260fef543bc49e59be5a3fa9074@seed.publicnode.com:26656",
-#    peers:"ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:15256,ebc272824924ea1a27ea3183dd0b9ba713494f83@fetchhub-mainnet-seed.autostake.com:27266",
-#    genesis: "https://raw.githubusercontent.com/fetchai/genesis-fetchhub/fetchhub-4/fetchhub-4/data/genesis_migrated_5300200.json",
-#    make: "install",
-#    homeDirectoryName: ".fetchd",
-#    twitter: "https://twitter.com/fetch_ai",
-#    github: "https://github.com/fetchai/",
-#    globe: "https://fetch.ai/",
-#    medium: "https://fetch-ai.medium.com/",
-#    discord: "https://discord.com/invite/fetchai",
-#    blockExplorer: "https://ping.pub/fetchhub",
-#    validatorUrl: "https://ping.pub/fetchhub/staking/fetchvaloper1scj052xwfajrpyydqkcq23j8zc8nsavwe2g8tr",
-#    Valoper: "fetchvaloper1scj052xwfajrpyydqkcq23j8zc8nsavwe2g8tr",
-#    denomName: "afet",
-#    coingekoCoinId: "artificial-superintelligence-alliance",
-#    denomPow: 18,
-#    newWayUnsafeResetAll: true,
-#    isProjectSupportUs: true,
-#    DexScreener: "https://api.dexscreener.com/latest/dex/pairs/osmosis/68",
-#    githubRepoName: 'fetchai'
-#  },
 ]
+
 
 
 
