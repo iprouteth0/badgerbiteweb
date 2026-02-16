@@ -140,7 +140,7 @@ export const CHAINS: Chain[] = [
   },
   {
     id: "fetchhub",
-    chainName: "fetch.ai",
+    chainName: "fetchhub",
     chainId: "fetchhub-4",
     logo: "fet.svg",
     snapshotServer: "https://www.polkachu.com/tendermint_snapshots/fetch",
@@ -173,6 +173,7 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'fetchai'
   },
 ]
+
 
 
 
