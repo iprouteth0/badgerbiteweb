@@ -141,7 +141,7 @@ export const CHAINS: Chain[] = [
     id: "fetch",
     chainName: "fetch.ai",
     chainId: "fetchhub-4",
-    logo: "jackal.svg",
+    logo: "fetch.svg",
     snapshotServer: "https://www.polkachu.com/tendermint_snapshots/jackal",
     SnapshotProvider: "Polkachu",
     rpcServer: "https://rpc.cosmos.directory/jackal",
@@ -172,5 +172,6 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'fetchd'
   },
 ]
+
 
 
