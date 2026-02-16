@@ -139,15 +139,15 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'JackalLabs'
   },
   {
-    id: "fetch",
+    id: "fetchhub",
     chainName: "fetch.ai",
     chainId: "fetchhub-4",
-    logo: "fetch.svg",
+    logo: "fet.svg",
     snapshotServer: "https://www.polkachu.com/tendermint_snapshots/fetch",
     SnapshotProvider: "Polkachu",
     rpcServer: "https://rpc.cosmos.directory/fetchhub",
-    statesyncServer: "https://https://fetch-api.polkachu.com:443",
-    restServer: "https://fetch-api.polkachu.com//", 
+    statesyncServer: "https://fetch-api.polkachu.com:443",
+    restServer: "https://fetch-api.polkachu.com/", 
     rpcPeer: "fda1f87472c9c2ee89a0ba36a9a9cc38f96e283a@198.244.212.27:26656",
     serviceName: "fetchd",
     version: "0.14.1",
@@ -173,6 +173,7 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'fetchai'
   },
 ]
+
 
 
 
