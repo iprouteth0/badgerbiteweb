@@ -165,7 +165,7 @@ export const CHAINS: Chain[] = [
     validatorUrl: "https://ping.pub/fetchhub/staking/fetchvaloper1scj052xwfajrpyydqkcq23j8zc8nsavwe2g8tr",
     Valoper: "fetchvaloper1scj052xwfajrpyydqkcq23j8zc8nsavwe2g8tr",
     denomName: "afet",
-    coingekoCoinId: "fetchr",
+    coingekoCoinId: "artificial-superintelligence-alliance",
     denomPow: 18,
     newWayUnsafeResetAll: true,
     isProjectSupportUs: true,
@@ -173,6 +173,7 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'fetchai'
   },
 ]
+
 
 
 
