@@ -111,9 +111,9 @@ export const CHAINS: Chain[] = [
     logo: "jackal.svg",
     snapshotServer: "https://www.polkachu.com/tendermint_snapshots/jackal",
     SnapshotProvider: "Polkachu",
-    rpcServer: "https://rpc.cosmos.directory/jackal",
-    statesyncServer: "https://rpc.jackalprotocol.com:443",
-    restServer: "https://api.jackalprotocol.com/", 
+    rpcServer: "https://jackal-rpc.polkachu.com/",
+    statesyncServer: "https://https://jackal-rpc.polkachu.com:443",
+    restServer: "https://jackal-api.polkachu.com/", 
     rpcPeer: "fda1f87472c9c2ee89a0ba36a9a9cc38f96e283a@198.244.212.27:26656",
     serviceName: "canined",
     version: "4.6.0",
@@ -139,6 +139,7 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'JackalLabs'
   },
 ]
+
 
 
 
