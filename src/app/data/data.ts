@@ -142,14 +142,14 @@ export const CHAINS: Chain[] = [
     chainName: "fetch.ai",
     chainId: "fetchhub-4",
     logo: "fetch.svg",
-    snapshotServer: "https://www.polkachu.com/tendermint_snapshots/jackal",
+    snapshotServer: "https://www.polkachu.com/tendermint_snapshots/fetch",
     SnapshotProvider: "Polkachu",
-    rpcServer: "https://rpc.cosmos.directory/jackal",
-    statesyncServer: "https://rpc.jackalprotocol.com:443",
-    restServer: "https://api.jackalprotocol.com/", 
+    rpcServer: "https://rpc.cosmos.directory/fetchhub",
+    statesyncServer: "https://https://fetch-api.polkachu.com:443",
+    restServer: "https://fetch-api.polkachu.com//", 
     rpcPeer: "fda1f87472c9c2ee89a0ba36a9a9cc38f96e283a@198.244.212.27:26656",
-    serviceName: "canined",
-    version: "4.6.0",
+    serviceName: "fetchd",
+    version: "0.14.1",
     seeds: "17693da418c15c95d629994a320e2c4f51a8069b@connect-fetchhub.fetch.ai:36456,ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:15256,ebc272824924ea1a27ea3183dd0b9ba713494f83@fetchhub-mainnet-seed.autostake.com:27266,8542cd7e6bf9d260fef543bc49e59be5a3fa9074@seed.publicnode.com:26656",
     peers:"ade4d8bc8cbe014af6ebdf3cb7b1e9ad36f412c0@seeds.polkachu.com:15256,ebc272824924ea1a27ea3183dd0b9ba713494f83@fetchhub-mainnet-seed.autostake.com:27266",
     genesis: "https://raw.githubusercontent.com/fetchai/genesis-fetchhub/fetchhub-4/fetchhub-4/data/genesis_migrated_5300200.json",
@@ -172,6 +172,7 @@ export const CHAINS: Chain[] = [
     githubRepoName: 'fetchd'
   },
 ]
+
 
 
 
